@@ -3,6 +3,9 @@ package com.trueddns.homenano.kotlinviewbinding
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.trueddns.homenano.kotlinviewbinding.Fragment.HomeFragment
 import com.trueddns.homenano.kotlinviewbinding.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,9 +19,12 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
-        binding.messageButton.setOnClickListener {
-            Toast.makeText(this,"View Binding", Toast.LENGTH_SHORT)
-                .show()
-        }
+        val homeFragment = HomeFragment()
+        val fragmentManger: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManger.beginTransaction()
+        fragmentTransaction.replace(R.id.activity_main, homeFragment).commit()
+
+
+
     }
 }
